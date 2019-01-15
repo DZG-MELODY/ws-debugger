@@ -1,0 +1,36 @@
+{
+  "name": "ws-debugger",
+  "version": "0.0.1",
+  "description": "a simple smart websocket debugger tool for web page and web application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DZG-MELODY/ws-debugger.git"
+  },
+  "keywords": [
+    "js",
+    "websocket",
+    "debug"
+  ],
+  "author": "dzg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DZG-MELODY/ws-debugger/issues"
+  },
+  "homepage": "https://github.com/DZG-MELODY/ws-debugger#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "ejs": "^2.6.1",
+    "koa": "^2.6.2",
+    "koa-router": "^7.4.0",
+    "koa-views": "^6.1.5",
+    "ws": "^6.1.2"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.48",
+    "@types/ws": "^6.0.1"
+  }
+}

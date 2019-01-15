@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>WebSocket Debugger</h1>
+  <h5>info:</h5>
+  <p id="info"></p>
+  <div>
+    <textarea name="messageContent" id="messageContent" cols="30" rows="10"></textarea>
+  </div>
+  <div>
+    <button id="sendBtn">send</button>
+  </div>
+  <ul>
+    <% for(var i=0; i< history.length; i++) {%>
+    <li><p>
+      <%= history[i] %>
+    </p></li>
+    <% } %> 
+  </ul>
+  <script>
+    const $info = document.querySelector('#info');
+    const $sendBtn = document.querySelector('#sendBtn');
+    const $messageContent = document.querySelector('#messageContent');
+
+    const ws = new WebSocket('ws://127.0.0.1:8080');
+    ws.addEventListener('open',evt=>{
+      $info.textContent = 'connect success!';
+      ws.send(JSON.stringify({
+        type:'init',
+        id:document.location.host
+      }));
+    })
+    ws.addEventListener('message',evt=>{
+      $info.textContent = evt.data;
+    });
+
+    $sendBtn.addEventListener('click',function(){
+      ws.send(JSON.stringify({
+        type:'send',
+        id:document.location.host,
+        message:$messageContent.value
+      }));
+    })
+
+  </script>
+</body>
+
+</html>
