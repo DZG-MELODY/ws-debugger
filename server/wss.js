@@ -15,6 +15,7 @@ module.exports = function wss (server, db) {
     setTimeout(() => {
       ws.send('welcome to ws debugger');
     }, 2000);
+    logger.log(`receive connection from [${ws}]`);
     ws.on('message', function receiveMsg (message) {
       let data = '';
       try {

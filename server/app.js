@@ -34,9 +34,10 @@ app.on('error', err => {
 });
 
 logger.success('server is start...');
-
 app.listen(config.port, config.host);
+logger.log(`server is listen at http://${config.host}:${config.port}`);
 
 logger.success('ws server is start...');
 // wss
 wss(http.Server(app.callback()), db);
+logger.log(`ws server is listen at ws://${config.host}:${config.ws_port}`);

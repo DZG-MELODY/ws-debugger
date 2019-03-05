@@ -4,4 +4,5 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 
+src/lib/db/history.json
 node_modules/*
