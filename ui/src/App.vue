@@ -79,6 +79,7 @@ export default {
         (this.netStatus.type = "success");
       receivedData.type == "send" &&
         (this.msgLogs = this.handleMsgLogs(receivedData.msgLogs));
+      receivedData.type == "error" && this.$message.error(receivedData.message);
     });
   },
   beforeDestroy() {
