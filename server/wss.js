@@ -13,7 +13,7 @@ module.exports = function wss (server, db) {
 
   wss.on('connection', function connection (ws) {
     setTimeout(() => {
-      ws.send('welcome to ws debugger');
+      ws.send(JSON.stringify({type:'init',message:'welcome to ws debugger',msgLogs:[]}));
     }, 2000);
     logger.log(`receive connection from [${ws}]`);
     ws.on('message', function receiveMsg (message) {
@@ -29,6 +29,8 @@ module.exports = function wss (server, db) {
           uiList.push(data.id);
         } else if (data.type === 'send' && uiList.indexOf(data.id) >= 0) {
           db.addHistory(data.message);
+          const history=db.getHistory();
+          ws.send(JSON.stringify({type:'send',message:'此处为mock请求对应的mock数据',msgLogs:history}));
         }
       } else {
         console.log(`message:${message}`);
